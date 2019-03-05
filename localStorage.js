@@ -25,13 +25,13 @@ function test() {
   let obj;
   
   obj = ls.get(key, zero);
-  out(JSON.stringify(obj));
+  out(JSON.stringify(obj)); //-> {"x":"bar","y":42}
   
   ++obj.y;
   ls.put(key, obj);
   
   obj = ls.get(key, zero);
-  out(JSON.stringify(obj));
+  out(JSON.stringify(obj)); //-> {"x":"bar","y":43}
   
   ls.del(key);
 }
