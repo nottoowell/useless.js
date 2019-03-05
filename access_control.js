@@ -23,7 +23,7 @@
     Object.defineProperty(this, 'value', {
       get: () => _x,
       set: value => {
-        if (! Number.idInteger(value)) {
+        if (! Number.isInteger(value)) {
           throw new TypeError('should be a number');
         }
         _x = value;
@@ -79,5 +79,5 @@
   });
   
   bar.value = 42;
-  out(bar.value, foo.value);
+  out(bar.value, foo.x); //-> 42 42
 })();
