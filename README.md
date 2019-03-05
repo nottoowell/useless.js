@@ -3,11 +3,18 @@
 demo
 
 - [access control](access_control.js)
+- [closure in iteration](closure_in_iteration.js)
 - [constructor](constructor.js)
 - [for of vs. for in](for-of_for-in.js) -- modification during iteration
+- [function arguments](arguments.js)
 - [function identity](function_identity.js)
 - [function vs. var](function_var.js)
 - [generator](generator.js)
 - [localStorage](localStorage.js)
 - [prototype, inheritance](inheritance.js)
+- [rest, spread](rest_spread.js)
 - [scope](scope.js)
+
+nothing
+
+- [Implements Stack with Queue](stack-with-queue.js)
