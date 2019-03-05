@@ -1,1 +1,3 @@
-# useless.js
+# Useless JavaScript
+
+demo
