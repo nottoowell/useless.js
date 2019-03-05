@@ -1,3 +1,7 @@
+////////////////////////////////////////
+// for of
+// modification during iteration
+
 (function for_of() {
   let a = [1,2,3];
   for (let x of a) {
@@ -7,6 +11,10 @@
     }
   }
 })();
+
+////////////////////////////////////////
+// for in
+// modification during iteration
 
 (function for_in() {
   let a = [1,2,3];
