@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+button { display: block; }
+</style>
+<script>
+function out(x) {
+  var args = Array.from(arguments);
+  args.unshift('>>>');
+  console.log.apply(null, args);
+}
+</script>
+<body>
+
+<button onclick="cc()">callback chain</button>
+
+<script>
+function cc() {
+  function hello(name, ix) {
+    setTimeout(() => {
+      callback('Hello '+name, ix);
+    }, 150);
+  }
+  function callback(message, ix) {
+    out(message);
+    if (ix < data.length) {
+      hello(data[ix], ++ix);
+    } else {
+      console.timeEnd('callback-chain-demo');
+    }
+  }
+  var data = ['Jack','Jill','John'];
+  (function (data) {
+    console.time('callback-chain-demo');
+    var ix = 0;
+    hello(data[ix], ++ix);
+  })(data);
+}
+</script>
+
+<button onclick="sp()">serial promise</button>
+
+<script>
+function hello(name) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Hello '+name);
+    }, 150);
+  }).then(callback);
+}
+function callback(message) {
+  out(message);
+  return message;
+}
+
+function sp() {
+  var data = ['Jack','Jill','John'];
+  (function (data) {
+    console.time('serial-demo');
+    var p = Promise.resolve();
+    data.forEach((name, _ix) => {
+      p = p.then(() => hello(name));
+    });
+    p.then(() => {
+      console.timeEnd('serial-demo');
+    });
+  })(data);
+}
+</script>
+
+<button onclick="spa()">serial promise await</button>
+
+<script>
+function spa() {
+  var data = ['Jack','Jill','John'];
+  (async function (data) {
+    console.time('serial-await-demo');
+    for (let name of data) {
+      await hello(name);
+    }
+    console.timeEnd('serial-await-demo');
+  })(data);
+}
+</script>
+
+<button onclick="pp()">parallel promise</button>
+
+<script>
+function pp() {
+  var data = ['Jack','Jill','John'];
+  (function (data) {
+    console.time('parallel-demo');
+    var requests = data.map((name, _ix) => {
+      return hello(name);
+    });
+    Promise.all(requests).then((data) => {
+      out(data);
+      console.timeEnd('parallel-demo');
+    });
+  })(data);
+}
+</script>
+
+<button onclick="ppa()">parallel promise await</button>
+
+<script>
+function ppa() {
+  var data = ['Jack','Jill','John'];
+  (async function (data) {
+    console.time('parallel-await-demo');
+    var requests = data.map((name, _ix) => {
+      return hello(name);
+    });
+    await Promise.all(requests);
+    console.timeEnd('parallel-await-demo');
+  })(data);
+}
+</script>
+
+</body>
+</html>
