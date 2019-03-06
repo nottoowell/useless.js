@@ -3,10 +3,10 @@
 demo
 
 - [access control](access_control.js)
-- [callback chain](callback-chain.html) || promise, async/await
+- beyond [callback chain](callback-chain.html): promise, async/await
 - [closure in iteration](closure_in_iteration.js)
 - [constructor](constructor.js)
-- [for of vs. for in](for-of_for-in.js) -- modification during iteration
+- [for of vs. for in](for-of_for-in.js) with modification during iteration
 - [function arguments](arguments.js)
 - [function identity](function_identity.js)
 - [function vs. var](function_var.js)
